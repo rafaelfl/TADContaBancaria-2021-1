@@ -1,15 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "ContaBancaria.h"
 
-void inicializar_conta(ContaBancaria *conta, char numconta[20], char numage[20], TipoConta tipoc, double saldo_inicial) {
+ContaBancaria * criar_conta(char numconta[20], char numage[20], TipoConta tipoc, double saldo_inicial) {
+
+  ContaBancaria *conta;
+  conta = malloc(sizeof(ContaBancaria));
+  
   strcpy(conta->numero_conta, numconta);
-
   strcpy(conta->agencia, numage);
-
   conta->tipo_conta = tipoc;
-
   conta->saldo = saldo_inicial;
+
+  return conta;
 }
 
 void depositar(ContaBancaria *conta, double valor) {
@@ -40,4 +44,8 @@ void imprimir_saldo(ContaBancaria *conta) {
 void transferir (ContaBancaria *conta_origem, ContaBancaria *conta_destino, double valor) {
   conta_origem->saldo  -= valor;
   conta_destino->saldo += valor;
+}
+
+void destruir_conta(ContaBancaria *conta) {
+  free(conta);
 }

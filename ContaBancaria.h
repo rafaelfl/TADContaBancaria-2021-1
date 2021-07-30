@@ -11,7 +11,7 @@ typedef struct _ContaBancaria {
 } ContaBancaria;
 
 // OPERAÇÕES
-void inicializar_conta(ContaBancaria *conta, char nc[20], char ag[20], TipoConta tc, double s);
+ContaBancaria* criar_conta(char nc[20], char ag[20], TipoConta tc, double s);
 
 void depositar(ContaBancaria *conta, double valor);
 
@@ -20,3 +20,5 @@ void sacar(ContaBancaria *conta, double valor);
 void imprimir_saldo(ContaBancaria *conta);
 
 void transferir (ContaBancaria *conta_origem, ContaBancaria *conta_destino, double valor);
+
+void destruir_conta(ContaBancaria *conta);
